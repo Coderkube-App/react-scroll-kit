@@ -50,3 +50,4 @@ temp/
 # Turbo / cache
 .turbo/
 .cache/
+*.tgz
