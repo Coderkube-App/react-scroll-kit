@@ -1,0 +1,13 @@
+# Ignore configuration files
+tsup.config.ts
+tsconfig.json
+vitest.config.ts
+.gitignore
+.npmignore
+
+# Ignore test directories
+tests
+coverage
+
+# Ignore source files (optional, but standard for compiled packages)
+src
