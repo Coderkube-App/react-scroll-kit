@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Dependencies
 node_modules/
 .pnp
@@ -19,7 +18,6 @@ html-report/
 .env.development.local
 .env.test.local
 .env.production.local
-=======
 # Logs
 logs
 *.log
@@ -184,7 +182,6 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
->>>>>>> 84c68d299f159c7e2a4001e5122f980755af3a8d
 
 # Logs
 *.log
