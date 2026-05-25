@@ -447,7 +447,7 @@ Scroll restoration only triggers on browser back/forward navigation.
 Clone repository:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/Coderkube-App/react-scroll-kit.git
 
 cd react-scroll-kit
 
