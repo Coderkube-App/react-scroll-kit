@@ -13,8 +13,6 @@ coverage/
 html-report/
 
 # Environment variables
-.env
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
@@ -86,8 +84,6 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
-.env.*
 !.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -179,8 +175,6 @@ Thumbs.db
 *.swo
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # Logs
@@ -216,3 +210,6 @@ temp/
 *.tgz
 branch_structure.json
 .gitignore
+config.bat
+temp_auto_push.bat
+temp_interactive_push.bat

@@ -1,0 +1,512 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="'Segoe UI',system-ui,sans-serif">
+<defs>
+  <!-- Gorgeous premium gradient definitions -->
+  <linearGradient id="gPrimary" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b82f6"/>
+    <stop offset="50%" stop-color="#8b5cf6"/>
+    <stop offset="100%" stop-color="#ec4899"/>
+  </linearGradient>
+  <linearGradient id="gCool" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#00f2fe"/>
+    <stop offset="100%" stop-color="#4facfe"/>
+  </linearGradient>
+  <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f59e0b"/>
+    <stop offset="100%" stop-color="#fb7185"/>
+  </linearGradient>
+  <linearGradient id="gBar" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#3b82f6"/>
+    <stop offset="50%" stop-color="#8b5cf6"/>
+    <stop offset="100%" stop-color="#ec4899"/>
+  </linearGradient>
+  
+  <!-- Sleek glow filters for maximum aesthetic impact -->
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="5" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <!-- Viewport clipping for browser scrolling mockup -->
+  <clipPath id="browserClip">
+    <rect x="62" y="135" width="376" height="425" rx="0"/>
+  </clipPath>
+  <clipPath id="odometerYClip">
+    <rect x="803" y="660" width="75" height="32" rx="4"/>
+  </clipPath>
+  <clipPath id="odometerPClip">
+    <rect x="965" y="660" width="85" height="32" rx="4"/>
+  </clipPath>
+  
+  <style>
+    /* Coordinated 12s master animation timeline */
+    @keyframes scrollContent {
+      0%, 15% { transform: translateY(0); }
+      22%, 48% { transform: translateY(-160px); }
+      54%, 55% { transform: translateY(-340px); }
+      56%, 74% { transform: translateY(0); } /* Route Change Auto Scroll Restore triggers here! */
+      78%, 94% { transform: translateY(-340px); }
+      97%, 100% { transform: translateY(0); } /* Click scroll-back-to-top behavior="smooth" */
+    }
+    
+    @keyframes progressBar {
+      0%, 15% { width: 0; }
+      22%, 48% { width: 180px; }
+      54%, 55% { width: 376px; }
+      56%, 74% { width: 0; }
+      78%, 94% { width: 376px; }
+      97%, 100% { width: 0; }
+    }
+    
+    @keyframes fadeBtn {
+      0%, 25% { opacity: 0; transform: scale(0.6); }
+      28%, 94% { opacity: 1; transform: scale(1); }
+      95%, 96% { opacity: 1; transform: scale(0.85); } /* Press/Click effect */
+      97%, 99% { opacity: 0.5; transform: scale(0.9); }
+      100% { opacity: 0; transform: scale(0.6); }
+    }
+    
+    @keyframes rippleEffect {
+      0%, 94% { r: 0px; opacity: 0; }
+      95% { r: 6px; opacity: 1; }
+      98% { r: 32px; opacity: 0; }
+      99%, 100% { r: 0px; opacity: 0; }
+    }
+    
+    @keyframes mouseMove {
+      0%, 86% { opacity: 0; transform: translate(250px, 520px); }
+      91% { opacity: 1; transform: translate(415px, 515px); } /* Hover on Button */
+      95% { opacity: 1; transform: translate(415px, 515px) scale(0.8); } /* Click! */
+      98%, 100% { opacity: 0; transform: translate(380px, 480px); }
+    }
+
+    /* Router Address bar route indicator simulation */
+    @keyframes urlHomeFade {
+      0%, 50% { opacity: 1; }
+      54%, 88% { opacity: 0; }
+      93%, 100% { opacity: 1; }
+    }
+    @keyframes urlPricingFade {
+      0%, 50% { opacity: 0; }
+      54%, 88% { opacity: 1; }
+      93%, 100% { opacity: 0; }
+    }
+
+    /* Route Changed auto scroll to top toast alert */
+    @keyframes routeBannerFade {
+      0%, 50% { opacity: 0; transform: translateY(-12px) scale(0.95); }
+      54%, 72% { opacity: 1; transform: translateY(0) scale(1); }
+      75%, 100% { opacity: 0; transform: translateY(-12px) scale(0.95); }
+    }
+
+    /* Sentinel spinner loading trigger representing useInfiniteScroll */
+    @keyframes loadingSpinner {
+      0%, 82% { opacity: 0; transform: translate(250px, 510px) rotate(0deg); }
+      84%, 93% { opacity: 1; transform: translate(250px, 510px) rotate(360deg); }
+      95%, 100% { opacity: 0; transform: translate(250px, 510px) rotate(720deg); }
+    }
+    
+    @keyframes activeHome {
+      0%, 15%, 56%, 74%, 97%, 100% { fill: #3b82f6; }
+      22%, 48%, 78%, 94% { fill: rgba(255, 255, 255, 0.08); }
+    }
+    @keyframes textHome {
+      0%, 15%, 56%, 74%, 97%, 100% { fill: #ffffff; }
+      22%, 48%, 78%, 94% { fill: #e2e8f0; }
+    }
+    @keyframes activeFeatures {
+      0%, 15%, 54%, 74%, 97%, 100% { fill: rgba(255, 255, 255, 0.08); }
+      22%, 48% { fill: #8b5cf6; }
+      78%, 94% { fill: rgba(255, 255, 255, 0.08); }
+    }
+    @keyframes textFeatures {
+      0%, 15%, 54%, 74%, 97%, 100% { fill: #e2e8f0; }
+      22%, 48% { fill: #ffffff; }
+      78%, 94% { fill: #e2e8f0; }
+    }
+    @keyframes activePricing {
+      0%, 48%, 56%, 74%, 97%, 100% { fill: rgba(255, 255, 255, 0.08); }
+      50%, 53%, 78%, 94% { fill: #ec4899; }
+    }
+    @keyframes textPricing {
+      0%, 48%, 56%, 74%, 97%, 100% { fill: #e2e8f0; }
+      50%, 53%, 78%, 94% { fill: #ffffff; }
+    }
+
+    /* Rotating golden direction indicator arrow styling */
+    @keyframes dirArrow {
+      0%, 15% { transform: rotate(0deg); fill: #4b5563; }
+      16%, 21% { transform: rotate(180deg); fill: #fbbf24; }
+      22%, 48% { transform: rotate(180deg); fill: #4b5563; }
+      49%, 53% { transform: rotate(180deg); fill: #fbbf24; }
+      54%, 55% { transform: rotate(180deg); fill: #4b5563; }
+      56%, 73% { transform: rotate(0deg); fill: #34d399; }
+      74%, 77% { transform: rotate(180deg); fill: #fbbf24; }
+      78%, 93% { transform: rotate(180deg); fill: #4b5563; }
+      94%, 96% { transform: rotate(0deg); fill: #34d399; }
+      97%, 100% { transform: rotate(0deg); fill: #4b5563; }
+    }
+
+    /* Coordinate status LEDs triggers */
+    @keyframes ledScrollSpy {
+      0%, 15% { fill: #3b82f6; filter: url(#glow); }
+      22%, 48% { fill: #8b5cf6; filter: url(#glow); }
+      50%, 55%, 78%, 94% { fill: #ec4899; filter: url(#glow); }
+      56%, 77% { fill: #3b82f6; filter: url(#glow); }
+    }
+    @keyframes ledScrolledPast {
+      0%, 25% { fill: #374151; filter: none; }
+      26%, 100% { fill: #34d399; filter: url(#glow); }
+    }
+    @keyframes ledInView {
+      0%, 21% { fill: #374151; filter: none; }
+      22%, 48% { fill: #00f2fe; filter: url(#glow); }
+      49%, 77% { fill: #374151; filter: none; }
+      78%, 94% { fill: #00f2fe; filter: url(#glow); }
+      95%, 100% { fill: #374151; filter: none; }
+    }
+    @keyframes ledInfinite {
+      0%, 82% { fill: #374151; filter: none; }
+      83%, 94% { fill: #fbbf24; filter: url(#glow); }
+      95%, 100% { fill: #374151; filter: none; }
+    }
+
+    @keyframes odometerY {
+      0%, 15%, 56%, 74%, 97%, 100% { transform: translateY(0px); }
+      22%, 48% { transform: translateY(-36px); }
+      50%, 55%, 78%, 94% { transform: translateY(-72px); }
+    }
+    @keyframes odometerP {
+      0%, 15%, 56%, 74%, 97%, 100% { transform: translateY(0px); }
+      22%, 48% { transform: translateY(-36px); }
+      50%, 55%, 78%, 94% { transform: translateY(-72px); }
+    }
+
+    @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+    @keyframes hookFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    
+    .scrolling { animation: scrollContent 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+    .progBar { animation: progressBar 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+    .topBtn { animation: fadeBtn 12s ease-in-out infinite; transform-origin: 420px 510px; }
+    .clickRipple { animation: rippleEffect 12s ease-out infinite; }
+    .cursorAnim { animation: mouseMove 12s ease-in-out infinite; pointer-events: none; }
+    
+    .urlHome { animation: urlHomeFade 12s ease-in-out infinite; }
+    .urlPricing { animation: urlPricingFade 12s ease-in-out infinite; }
+    .routeBanner { animation: routeBannerFade 12s ease-in-out infinite; }
+    .spinnerAnim { animation: loadingSpinner 12s ease-in-out infinite; }
+    
+    .btnHome { animation: activeHome 12s ease-in-out infinite; }
+    .txtHome { animation: textHome 12s ease-in-out infinite; }
+    .btnFeatures { animation: activeFeatures 12s ease-in-out infinite; }
+    .txtFeatures { animation: textFeatures 12s ease-in-out infinite; }
+    .btnPricing { animation: activePricing 12s ease-in-out infinite; }
+    .txtPricing { animation: textPricing 12s ease-in-out infinite; }
+    
+    .dirIcon { animation: dirArrow 12s ease-in-out infinite; transform-origin: 220px 75px; }
+    .odometerYAnim { animation: odometerY 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+    .odometerPAnim { animation: odometerP 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+    
+    .hookCard { animation: hookFloat 3s ease-in-out infinite; }
+    .hookCard:nth-child(2) { animation-delay: .5s; }
+    .hookCard:nth-child(3) { animation-delay: 1s; }
+    .liveDot { animation: pulse 2s infinite; }
+
+    .spyLED { animation: ledScrollSpy 12s ease-in-out infinite; }
+    .pastLED { animation: ledScrolledPast 12s ease-in-out infinite; }
+    .inViewLED { animation: ledInView 12s ease-in-out infinite; }
+    .infiniteLED { animation: ledInfinite 12s ease-in-out infinite; }
+  </style>
+</defs>
+
+<!-- BG -->
+<rect width="1200" height="800" rx="16" fill="#06060a" stroke="rgba(255,255,255,.06)" stroke-width="1.5"/>
+<rect x="20" y="20" width="1160" height="760" rx="12" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+
+<!-- TITLE HEADER -->
+<text x="600" y="52" text-anchor="middle" fill="url(#gPrimary)" font-size="28" font-weight="900" letter-spacing="-0.5">react-scroll-kit</text>
+<text x="600" y="78" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800" letter-spacing="1">ROUTER-AWARE SCROLL MANAGEMENT SYSTEM FOR REACT</text>
+
+<!-- ═══════════ BROWSER WINDOW MOCKUP ═══════════ -->
+<g transform="translate(0,0)">
+  <!-- Outer Window Frame -->
+  <rect x="50" y="120" width="400" height="450" rx="12" fill="#0f0f18" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+  
+  <!-- OS Title Bar -->
+  <rect x="50" y="120" width="400" height="36" rx="12" fill="#181826"/>
+  <rect x="50" y="146" width="400" height="10" fill="#181826"/>
+  <circle cx="72" cy="138" r="6" fill="#ff5f57"/>
+  <circle cx="90" cy="138" r="6" fill="#febc2e"/>
+  <circle cx="108" cy="138" r="6" fill="#28c840"/>
+  
+  <!-- Address Bar Input Area -->
+  <rect x="150" y="129" width="220" height="18" rx="9" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+  <!-- Alternating Address texts -->
+  <text x="260" y="142" text-anchor="middle" class="urlHome" fill="#4facfe" font-size="10.5" font-weight="bold">localhost:5173/</text>
+  <text x="260" y="142" text-anchor="middle" class="urlPricing" fill="#34d399" font-size="10.5" font-weight="bold">localhost:5173/pricing</text>
+
+  <!-- ScrollProgressBar (Only one elegant top progress bar inside window) -->
+  <rect class="progBar" x="62" y="156" height="5" rx="2.5" fill="url(#gBar)" filter="url(#glow)"/>
+
+  <!-- Viewport clipped container area -->
+  <g clip-path="url(#browserClip)">
+    <g class="scrolling">
+      <!-- HERO CARD -->
+      <rect x="80" y="165" width="340" height="130" rx="8" fill="rgba(139,92,246,.12)" stroke="rgba(139,92,246,.25)" stroke-width="1.5"/>
+      <text x="250" y="205" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">Your React App</text>
+      <text x="250" y="228" text-anchor="middle" fill="#cbd5e0" font-size="12" font-weight="800">Hero Section · #home</text>
+      <rect x="180" y="246" width="140" height="28" rx="14" fill="url(#gPrimary)" opacity=".95" filter="url(#glow)"/>
+      <text x="250" y="264" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="900">EXPLORE DOCS</text>
+
+      <!-- FEATURES CARD -->
+      <rect x="80" y="325" width="340" height="110" rx="8" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.25)" stroke-width="1.5"/>
+      <text x="250" y="358" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">Advanced Features</text>
+      <text x="250" y="380" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="800">#features section</text>
+      <!-- Sub components indicators -->
+      <rect x="95" y="396" width="95" height="22" rx="4" fill="rgba(59,130,246,.2)" stroke="rgba(59,130,246,.3)" stroke-width="1"/>
+      <text x="142" y="411" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800">Component A</text>
+      <rect x="200" y="396" width="95" height="22" rx="4" fill="rgba(139,92,246,.2)" stroke="rgba(139,92,246,.3)" stroke-width="1"/>
+      <text x="247" y="411" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800">Component B</text>
+      <rect x="305" y="396" width="95" height="22" rx="4" fill="rgba(6,182,212,.2)" stroke="rgba(6,182,212,.3)" stroke-width="1"/>
+      <text x="352" y="411" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800">Component C</text>
+
+      <!-- PRICING CARD -->
+      <rect x="80" y="465" width="340" height="110" rx="8" fill="rgba(16,185,129,.12)" stroke="rgba(16,185,129,.25)" stroke-width="1.5"/>
+      <text x="250" y="498" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">Flexible Pricing</text>
+      <text x="250" y="520" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="800">#pricing section</text>
+      <rect x="120" y="535" width="260" height="22" rx="4" fill="rgba(16,185,129,.2)"/>
+
+      <!-- CONTACT CARD -->
+      <rect x="80" y="605" width="340" height="110" rx="8" fill="rgba(245,158,11,.12)" stroke="rgba(245,158,11,.25)" stroke-width="1.5"/>
+      <text x="250" y="638" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">Get In Touch</text>
+      <text x="250" y="660" text-anchor="middle" fill="#fde047" font-size="11" font-weight="800">#contact section</text>
+      <rect x="120" y="675" width="260" height="22" rx="4" fill="rgba(245,158,11,.2)"/>
+    </g>
+    
+    <!-- useInfiniteScroll Sentinel loading trigger demo spinner -->
+    <g class="spinnerAnim">
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="16,10" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <!-- Route Restoration Overlay Toast Notification (React Router Fix) -->
+  <g class="routeBanner" transform="translate(68, 180)">
+    <rect width="364" height="38" rx="8" fill="#10b981" filter="url(#glow)" opacity="0.95"/>
+    <text x="182" y="24" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="900" letter-spacing="0.2">Route Changed ➔ Auto Scroll Restored!</text>
+  </g>
+
+  <!-- ScrollToTopButton with Click ripple & Hovering pointer -->
+  <g class="topBtn">
+    <circle cx="420" cy="510" r="18" fill="url(#gPrimary)" filter="url(#glow)"/>
+    <text x="420" y="516" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="900">↑</text>
+  </g>
+  <circle class="clickRipple" cx="420" cy="510" r="0" fill="none" stroke="#ec4899" stroke-width="3"/>
+  <g class="cursorAnim">
+    <path d="M0,0 L0,18 L5,14 L11,24 L14,21 L8,12 L14,12 Z" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  </g>
+
+  <!-- Dynamic Annotations pointing to mockup components -->
+  <line x1="60" y1="158" x2="25" y2="185" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3" opacity=".9"/>
+  <rect x="5" y="185" width="105" height="36" rx="6" fill="#161622" stroke="#a78bfa" stroke-width="1"/>
+  <text x="57.5" y="200" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="900">ScrollProgressBar</text>
+  <text x="57.5" y="212" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="800">Top/Bottom Option</text>
+
+  <line x1="438" y1="510" x2="475" y2="525" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="4,3" opacity=".9"/>
+  <rect x="475" y="505" width="115" height="46" rx="6" fill="#161622" stroke="#f472b6" stroke-width="1"/>
+  <text x="532.5" y="520" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="900">ScrollToTopButton</text>
+  <text x="532.5" y="532" text-anchor="middle" fill="#cbd5e0" font-size="8.5" font-weight="700">threshold={400}</text>
+  <text x="532.5" y="542" text-anchor="middle" fill="#34d399" font-size="8.5" font-weight="900">behavior="smooth"</text>
+</g>
+
+<!-- ═══════════ COMPONENTS API BOARD ═══════════ -->
+<g transform="translate(520, 120)">
+  <rect width="290" height="450" rx="12" fill="#0f0f18" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
+  <text x="20" y="32" fill="#4facfe" font-size="13" font-weight="900" letter-spacing="1">SCROLL COMPONENTS</text>
+
+  <!-- Component 1 -->
+  <g transform="translate(20, 52)">
+    <rect width="250" height="66" rx="8" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.25)" stroke-width="1"/>
+    <text x="16" y="26" fill="#ffffff" font-size="14" font-weight="900">🔄 &lt;ScrollToTop /&gt;</text>
+    <text x="16" y="44" fill="#f8fafc" font-size="11" font-weight="700">Resets Y scroll index on routes navigation</text>
+    <text x="16" y="56" fill="#93c5fd" font-size="9" font-weight="bold" font-family="monospace">behavior="smooth" | excludeRoutes</text>
+  </g>
+
+  <!-- Component 2 -->
+  <g transform="translate(20, 130)">
+    <rect width="250" height="66" rx="8" fill="rgba(139,92,246,.12)" stroke="rgba(139,92,246,.25)" stroke-width="1"/>
+    <text x="16" y="26" fill="#ffffff" font-size="14" font-weight="900">📊 &lt;ScrollProgressBar /&gt;</text>
+    <text x="16" y="44" fill="#f8fafc" font-size="11" font-weight="700">Highly customizable reading progress bar</text>
+    <text x="16" y="56" fill="#c084fc" font-size="9" font-weight="bold" font-family="monospace">position="top" | height | container</text>
+  </g>
+
+  <!-- Component 3 -->
+  <g transform="translate(20, 208)">
+    <rect width="250" height="66" rx="8" fill="rgba(6,182,212,.12)" stroke="rgba(6,182,212,.25)" stroke-width="1"/>
+    <text x="16" y="26" fill="#ffffff" font-size="14" font-weight="900">💾 &lt;ScrollRestoration /&gt;</text>
+    <text x="16" y="44" fill="#f8fafc" font-size="11" font-weight="700">Cache and restore list positions automatically</text>
+    <text x="16" y="56" fill="#22d3ee" font-size="9" font-weight="bold" font-family="monospace">storageKey | delay | containerRef</text>
+  </g>
+
+  <!-- Component 4 -->
+  <g transform="translate(20, 286)">
+    <rect width="250" height="66" rx="8" fill="rgba(16,185,129,.12)" stroke="rgba(16,185,129,.25)" stroke-width="1"/>
+    <text x="16" y="26" fill="#ffffff" font-size="14" font-weight="900">⬆️ &lt;ScrollToTopButton /&gt;</text>
+    <text x="16" y="44" fill="#f8fafc" font-size="11" font-weight="700">Floating trigger button past pixels threshold</text>
+    <text x="16" y="56" fill="#34d399" font-size="9" font-weight="bold" font-family="monospace">threshold={400} | behavior="smooth"</text>
+  </g>
+
+  <!-- Component 5 -->
+  <g transform="translate(20, 364)">
+    <rect width="250" height="66" rx="8" fill="rgba(245,158,11,.12)" stroke="rgba(245,158,11,.25)" stroke-width="1"/>
+    <text x="16" y="26" fill="#ffffff" font-size="14" font-weight="900">🔗 &lt;ScrollLink /&gt;</text>
+    <text x="16" y="44" fill="#f8fafc" font-size="11" font-weight="700">Router-aware smooth navigation scroll links</text>
+    <text x="16" y="56" fill="#fbbf24" font-size="9" font-weight="bold" font-family="monospace">to="/home#pricing" | scrollBehavior</text>
+  </g>
+</g>
+
+<!-- ═══════════ HOOKS & STATUS BOARD ═══════════ -->
+<g transform="translate(830, 120)">
+  <rect width="320" height="450" rx="12" fill="#0f0f18" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
+  <text x="20" y="32" fill="#a78bfa" font-size="13" font-weight="900" letter-spacing="1">REACTIVE HOOKS &amp; LEDs</text>
+
+  <!-- Hook 1 -->
+  <g transform="translate(20, 52)">
+    <rect width="280" height="54" rx="8" fill="rgba(6,182,212,.08)" stroke="rgba(6,182,212,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" class="spyLED"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useScrollSpy([...ids])</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Highlighted active navbar side menu items</text>
+  </g>
+
+  <!-- Hook 2 -->
+  <g transform="translate(20, 116)">
+    <rect width="280" height="54" rx="8" fill="rgba(16,185,129,.08)" stroke="rgba(16,185,129,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" class="pastLED"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useScrolledPast(300)</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Boolean trigger at threshold limit pixels</text>
+  </g>
+
+  <!-- Hook 3 -->
+  <g transform="translate(20, 180)">
+    <rect width="280" height="54" rx="8" fill="rgba(59,130,246,.08)" stroke="rgba(59,130,246,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" class="inViewLED"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useInView({ threshold })</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Viewport element Intersection observer status</text>
+  </g>
+
+  <!-- Hook 4 -->
+  <g transform="translate(20, 244)">
+    <rect width="280" height="54" rx="8" fill="rgba(139,92,246,.08)" stroke="rgba(139,92,246,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" class="infiniteLED"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useInfiniteScroll(loadMore)</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Automatic loading as reader hits list bottom</text>
+  </g>
+
+  <!-- Hook 5 -->
+  <g transform="translate(20, 308)">
+    <rect width="280" height="54" rx="8" fill="rgba(236,72,153,.08)" stroke="rgba(236,72,153,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" fill="#22d3ee" filter="url(#glow)"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useScrollPosition()</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Real-time X/Y offset coords monitoring</text>
+  </g>
+
+  <!-- Hook 6 -->
+  <g transform="translate(20, 372)">
+    <rect width="280" height="54" rx="8" fill="rgba(245,158,11,.08)" stroke="rgba(245,158,11,.18)" stroke-width="1"/>
+    <circle cx="260" cy="27" r="6" fill="#fbbf24" filter="url(#glow)"/>
+    <text x="16" y="24" fill="#ffffff" font-size="13" font-weight="900">useScrollDirection({ threshold })</text>
+    <text x="16" y="42" fill="#cbd5e0" font-size="10.5" font-weight="700">Detect relative UP or DOWN page scrolling</text>
+  </g>
+</g>
+
+<!-- ═══════════ LIVE TELEMETRY DASHBOARD (bottom row) ═══════════ -->
+<g transform="translate(50, 595)">
+  <!-- Bay 1: Scroll Spy & Navigation Monitor -->
+  <g transform="translate(0, 0)">
+    <rect width="360" height="120" rx="10" fill="rgba(59,130,246,.06)" stroke="rgba(59,130,246,.25)" stroke-width="1.5"/>
+    <circle cx="16" cy="18" r="5" fill="#3b82f6" class="liveDot"/>
+    <text x="28" y="22" fill="#ffffff" font-size="10" font-weight="900" letter-spacing="1">SCROLL SPY &amp; ACTIVE SECTION</text>
+
+    <!-- Spy Buttons representing scroll state -->
+    <rect class="btnHome" x="20" y="38" width="80" height="26" rx="13"/>
+    <text class="txtHome" x="60" y="55" text-anchor="middle" font-size="11" font-weight="bold">#home</text>
+    
+    <rect class="btnFeatures" x="110" y="38" width="95" height="26" rx="13"/>
+    <text class="txtFeatures" x="157.5" y="55" text-anchor="middle" font-size="11" font-weight="bold">#features</text>
+    
+    <rect class="btnPricing" x="215" y="38" width="90" height="26" rx="13"/>
+    <text class="txtPricing" x="260" y="55" text-anchor="middle" font-size="11" font-weight="bold">#pricing</text>
+
+    <text x="20" y="84" fill="#cbd5e0" font-size="11" font-weight="700">Active container navigation spy</text>
+    <rect x="20" y="93" width="320" height="20" rx="4" fill="rgba(59,130,246,.1)"/>
+    <text x="28" y="107" fill="#60a5fa" font-size="9" font-family="monospace" font-weight="900">const active = useScrollSpy(['#home','#features','#pricing'])</text>
+  </g>
+
+  <!-- Bay 2: Direction Sensor -->
+  <g transform="translate(380, 0)">
+    <rect width="320" height="120" rx="10" fill="rgba(16,185,129,.06)" stroke="rgba(16,185,129,.25)" stroke-width="1.5"/>
+    <circle cx="16" cy="18" r="5" fill="#10b981" class="liveDot"/>
+    <text x="28" y="22" fill="#ffffff" font-size="10" font-weight="900" letter-spacing="1">SCROLL DIRECTION SENSOR</text>
+
+    <!-- Golden rotating sensor arrow -->
+    <g transform="translate(220, 75)">
+      <polygon class="dirIcon" points="0,-25 15,10 -15,10" filter="url(#glow)"/>
+    </g>
+    
+    <text x="20" y="56" fill="#34d399" font-size="20" font-weight="900">useScrollDirection</text>
+    <text x="20" y="76" fill="#cbd5e0" font-size="11" font-weight="700">Real-time up/down status</text>
+    
+    <rect x="20" y="88" width="160" height="20" rx="4" fill="rgba(16,185,129,.1)"/>
+    <text x="28" y="102" fill="#34d399" font-size="9" font-family="monospace" font-weight="900">const dir = useScrollDirection()</text>
+  </g>
+
+  <!-- Bay 3: Dynamic Telemetry Counters -->
+  <g transform="translate(720, 0)">
+    <rect width="380" height="120" rx="10" fill="rgba(6,182,212,.06)" stroke="rgba(6,182,212,.25)" stroke-width="1.5"/>
+    <circle cx="16" cy="18" r="5" fill="#06b6d4" class="liveDot"/>
+    <text x="28" y="22" fill="#ffffff" font-size="10" font-weight="900" letter-spacing="1">COORDINATES &amp; PROGRESS READOUTS</text>
+
+    <!-- Y coordinate odometer rolling counter -->
+    <text x="25" y="78" fill="#ffffff" font-size="15" font-weight="900">Y Position:</text>
+    <g clip-path="url(#odometerYClip)">
+      <g class="odometerYAnim" transform="translate(0, 0)">
+        <text x="808" y="684" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">0</text>
+        <text x="808" y="720" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">480</text>
+        <text x="808" y="756" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">1250</text>
+      </g>
+    </g>
+    <text x="885" y="78" fill="#ffffff" font-size="15" font-weight="900">px</text>
+
+    <!-- Progress rolling % odometer -->
+    <text x="912" y="78" fill="#ffffff" font-size="15" font-weight="900">Progress:</text>
+    <g clip-path="url(#odometerPClip)">
+      <g class="odometerPAnim">
+        <text x="970" y="684" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">0%</text>
+        <text x="970" y="720" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">46%</text>
+        <text x="970" y="756" fill="#00f2fe" font-size="25" font-weight="900" font-family="monospace" filter="url(#glow)">100%</text>
+      </g>
+    </g>
+
+    <rect x="25" y="93" width="330" height="20" rx="4" fill="rgba(6,182,212,.1)"/>
+    <text x="32" y="107" fill="#22d3ee" font-size="9" font-family="monospace" font-weight="900">const { y } = useScrollPosition()  |  &lt;ScrollProgressBar /&gt;</text>
+  </g>
+</g>
+
+<!-- ═══════════ ACCESS & UTILITIES TRAY ═══════════ -->
+<g transform="translate(50, 725)">
+  <rect width="1100" height="40" rx="8" fill="rgba(245,158,11,.08)" stroke="rgba(245,158,11,.2)" stroke-width="1.5"/>
+  <circle cx="20" cy="20" r="5" fill="#f59e0b" class="liveDot"/>
+  
+  <text x="38" y="24" fill="#ffffff" font-size="11" font-weight="900" letter-spacing="1">UTILITIES &amp; ACCESS DOCK:</text>
+  
+  <text x="210" y="24" fill="#fbbf24" font-size="11.5" font-weight="900">scrollTo()</text>
+  <text x="285" y="24" fill="#ffffff" font-size="10.5" font-weight="700">|   hashScroll()</text>
+  <text x="385" y="24" fill="#f472b6" font-size="11.5" font-weight="900">lockScroll() / unlockScroll()</text>
+  <text x="560" y="24" fill="#ffffff" font-size="10.5" font-weight="700">|   prefersReducedMotion()</text>
+  
+  <text x="750" y="24" fill="#34d399" font-size="11" font-weight="800">✓ 0 Dependencies</text>
+  <text x="880" y="24" fill="#22d3ee" font-size="11" font-weight="800">✓ SSR Safe</text>
+  <text x="980" y="24" fill="#a78bfa" font-size="11" font-weight="800">✓ Tree-Shakeable</text>
+</g>
+</svg>
