@@ -8,6 +8,10 @@ Router-aware scroll management for React applications.
 
 Automatic scroll restoration, navigation-aware scrolling, reusable hooks, utilities, and optional UI components for React Router apps.
 
+<p align="center">
+  <img src="public/react-scroll-kit-overview.svg" alt="react-scroll-kit Overview" width="900" style="max-width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.5);" />
+</p>
+
 ---
 
 ## Features
